@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII to Upper Case Table</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>ASCII Characters and their Uppercase Versions</h1>
+    <table id="asciiTable">
+        <thead>
+            <tr>
+                <th>Character</th>
+                <th>Uppercase</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        const tableBody = document.querySelector('#asciiTable tbody');
+
+        for (let i = 0; i < 0xffff; i++) {
+            const ascii = String.fromCharCode(i);
+            if (/[A-Z]/g.test(ascii.toUpperCase())) {
+                if (!/[a-zA-Z]/g.test(ascii)) {
+                    const row = document.createElement('tr');
+                    const cell1 = document.createElement('td');
+                    const cell2 = document.createElement('td');
+                    cell1.textContent = ascii;
+                    cell2.textContent = ascii.toUpperCase();
+                    row.appendChild(cell1);
+                    row.appendChild(cell2);
+                    tableBody.appendChild(row);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
